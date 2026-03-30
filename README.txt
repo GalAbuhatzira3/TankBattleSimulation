@@ -36,4 +36,4 @@ Primary objective: Close distance to an enemy and fire from the shortest feasibl
 
 
 Command-line-arguments note: 
-I've added support in the optional command line argument gen_maps=<num> (more details in bonus.txt)
+I've added support in the optional command line argument gen_maps=<num> (more details in features.txt)
