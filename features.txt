@@ -49,3 +49,14 @@ I added an optional CLI argument gen_maps=<num> that specifies how many game map
 It then runs on the generated maps instead of any user-provided ones (Comparative: runs on the last map created; Competitive: runs on the entire folder). Therefore, when this argument is provided, the simulator skips validation of the map file in Comparative mode and the maps folder in Competitive mode, since those inputs are ignored. If the simulator is generating the maps, requiring valid user maps would be pointless.
 Maps are generated using randomness within configurable bounds: number of rows, number of columns, number of shells, maximum steps, and the placement percentages for each eligible character (wall, mine, player1, player2). 
 These upper bounds and percentages can be adjusted in the configuration file. It is worth mentioning that randomness is used only for map generation.
+
+6.  Algorithm:
+Aggressive policy: Prioritizes destroying enemy tanks over survival.
+Enemy discovery: Upon receiving MyBattleInfo, it scans the SatelliteView (BFS) to collect enemy positions.
+Path evaluation:
+ •	If no safe path exists to any enemy (i.e., a route free of shells, mines, or teammates tanks):
+   o	If the tank is in danger (some shell has a direct line to it, not necessarily on its current trajectory. The algorithm is provided with directionless satellite screenshot of the board), it evaluates all 8 neighboring cells, ordered by minimal rotate+move cost, and moves to the first safe candidate.
+   o	If not under threat, it prepares a shot: rotates/repositions as needed and fires when a clear shot is available. If no meaningful shot exists, it may try up to two shots along the current cannon direction, then rotate and yield control, hoping the board state changes (e.g., a wall is destroyed).
+ •	If a safe path exists, it advances along that path. At each step (and after each half/full rotation), it checks whether its current cannon direction already targets an enemy and fires when it’s able (tracks cooldowns) safe (no teammates in the line of fire) and worthwhile (a clear shot at an enemy).
+Friendly-fire safeguards: Never push a SHOOT command unless checks the shot will probably not hit a teammate or itself (e.g., through “invisible tunnel” scenarios).
+Primary objective: Close distance to an enemy and fire from the shortest feasible range to maximize accuracy and ensure a clear line of fire.
