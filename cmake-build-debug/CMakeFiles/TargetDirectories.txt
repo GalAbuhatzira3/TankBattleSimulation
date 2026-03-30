@@ -1,0 +1,11 @@
+C:/Users/gal/Downloads/Tank Battle Simulation/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/gal/Downloads/Tank Battle Simulation/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/gal/Downloads/Tank Battle Simulation/cmake-build-debug/Algorithm/CMakeFiles/Algorithm_211645361_000000000.dir
+C:/Users/gal/Downloads/Tank Battle Simulation/cmake-build-debug/Algorithm/CMakeFiles/edit_cache.dir
+C:/Users/gal/Downloads/Tank Battle Simulation/cmake-build-debug/Algorithm/CMakeFiles/rebuild_cache.dir
+C:/Users/gal/Downloads/Tank Battle Simulation/cmake-build-debug/GameManager/CMakeFiles/GameManager_211645361_000000000.dir
+C:/Users/gal/Downloads/Tank Battle Simulation/cmake-build-debug/GameManager/CMakeFiles/edit_cache.dir
+C:/Users/gal/Downloads/Tank Battle Simulation/cmake-build-debug/GameManager/CMakeFiles/rebuild_cache.dir
+C:/Users/gal/Downloads/Tank Battle Simulation/cmake-build-debug/Simulator/CMakeFiles/simulator_211645361_000000000.dir
+C:/Users/gal/Downloads/Tank Battle Simulation/cmake-build-debug/Simulator/CMakeFiles/edit_cache.dir
+C:/Users/gal/Downloads/Tank Battle Simulation/cmake-build-debug/Simulator/CMakeFiles/rebuild_cache.dir

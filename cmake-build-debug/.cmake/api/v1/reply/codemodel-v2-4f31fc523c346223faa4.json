@@ -1,0 +1,159 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "Algorithm",
+					"jsonFile" : "directory-Algorithm-Debug-59c47d7e8e2ebe46f92b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "Algorithm",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "GameManager",
+					"jsonFile" : "directory-GameManager-Debug-c4e721617491c2fdf567.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "GameManager",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "Simulator",
+					"jsonFile" : "directory-Simulator-Debug-e58182db3e407e557bc5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "Simulator",
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "TankSimAll"
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "Algorithm_211645361_000000000",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "GameManager_211645361_000000000",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "simulator_211645361_000000000",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "Algorithm_211645361_000000000::@0717138d1b5d78d31daf",
+					"jsonFile" : "target-Algorithm_211645361_000000000-Debug-ff38cc9027c71ed52322.json",
+					"name" : "Algorithm_211645361_000000000",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "GameManager_211645361_000000000::@6bd5da28b4dba184c0cc",
+					"jsonFile" : "target-GameManager_211645361_000000000-Debug-78fbb262afcf440eaea7.json",
+					"name" : "GameManager_211645361_000000000",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "simulator_211645361_000000000::@a346c7eb8af351c25daa",
+					"jsonFile" : "target-simulator_211645361_000000000-Debug-083dc9a21a5ca723e306.json",
+					"name" : "simulator_211645361_000000000",
+					"projectIndex" : 3
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/gal/Downloads/Tank Battle Simulation/cmake-build-debug",
+		"source" : "C:/Users/gal/Downloads/Tank Battle Simulation"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

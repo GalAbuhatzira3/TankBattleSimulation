@@ -1,0 +1,51 @@
+Features:
+1.	Simulator Logger:
+As part of the Simulator project, I implemented a logger that tracks the simulator activity. In addition to the required input_errors.txt, the logger records information at various levels about:
+•	Loading and unloading of .so files, including any errors during those operations.
+•	The configuration used for each match in comparative/competitive mode (arguments provided by the user and values extracted from the game map(s)).
+•	Warnings about recoverable runtime issues and error messages for unrecoverable ones.
+This log is optional. By default, it's not created (see the configuration file section). If enabled, it writes to the Simulator folder as Simulator_log_<unique_time>.log. Log levels (from lowest to highest) are: DEBUG, INFO, ILLEGAL, KEY, WARNING, ERROR, CRITICAL. The chosen level is a threshold: messages at that level and all higher-severity levels are logged.
+To avoid code duplication and comply with the assignment requirements, error messages intended for the user will be printed to the terminal and not written to the log, except for a general summary in unrecoverable-error cases.
+
+
+2.	GameManager Logger:
+As part of the GameManager project, I implemented a logger that tracks each match. For every match between two algorithms on a given game map, managed by a specific GameManager, a dedicated log is created. It records:
+•	Creation and initialization of the game board. For example, which character is placed in each cell, warnings about unsupported/unrecognized characters and how they are handled.
+•	Each player’s requests per step, the GameManager’s decision about whether or not to execute them, and the reason for its actions (usually level=INFO). Examples include denying a shot during cooldown or when out of ammo, and logging illegal requests (level=ILLEGAL).
+•	Key moments in the game (level=KEY), such as when a tank is destroyed.
+This log is optional and is not created by default. If enabled, it is written to the GameManager folder as GameManager_log_<unique_time>.log (the path can be modified in the configuration file).
+
+
+3.	Configuration file: 
+I also implemented a config.ini file to adjust settings for both loggers and the map generating system. It supports the following fields:
+•	sim.log.file/gm.log.file=<prefix>
+The filename prefix to which a unique timestamp is appended when the log file is created. This controls both the log name and location.
+Default if omitted: the per-component default path described above.
+•	sim.log.level/gm.log.level=<LogLevel>
+The minimum severity to record in the log. (See the GameManager logger section for the supported levels.)
+Default if omitted or invalid: no logger is created and nothing is printed.
+•	sim.log.console/gm.log.console=true|false
+If true, log lines are also echoed to the console.
+Default: false.
+•	sim.log.tid/gm.log.tid=true|false
+If false, the [thread:…] field is omitted from log lines (useful when TIDs are long and not informative).
+Default: true.
+•	map.dir: Name of the folder where generated maps are saved.
+•	map.rows.max … map.shells.max: Maximum values for the respective map fields.
+•	map.<object>.pct: Percentage/probability that the object appears in any given cell.
+The configuration is parsed and applied in UserCommon/Config.h.
+
+
+4.	Threads Documentation:
+The simulator records detailed information for each worker thread (as configured by the optional num_threads argument), collects data throughout the run, and displays the thread statistics in the log. The documentation includes:
+•	The number of threads requested, the number of available tasks, and the maximum number of worker threads the simulator will use.
+•	Each thread’s lifetime: when it starts executing, when it finishes, and how many tasks it completes.
+•	Aggregate run statistics: total tasks executed, total duration (useful for comparing runs with different num_threads values), throughput (tasks per second, TPS), and more.
+By default, this thread information is logged at the DEBUG level in the simulator logger and can be turned off by selecting a higher log level (e.g., INFO) in the configuration file.
+
+
+5.	Maps Generator System:
+I added an optional CLI argument gen_maps=<num> that specifies how many game maps the simulator should generate. When provided, the simulator attempts to create that many maps and saves them in the "maps" folder (the folder name can be changed in the configuration file).
+It then runs on the generated maps instead of any user-provided ones (Comparative: runs on the last map created; Competitive: runs on the entire folder). Therefore, when this argument is provided, the simulator skips validation of the map file in Comparative mode and the maps folder in Competitive mode, since those inputs are ignored. If the simulator is generating the maps, requiring valid user maps would be pointless.
+Maps are generated using randomness within configurable bounds: number of rows, number of columns, number of shells, maximum steps, and the placement percentages for each eligible character (wall, mine, player1, player2). 
+These upper bounds and percentages can be adjusted in the configuration file. It is worth mentioning that randomness is used only for map generation.
